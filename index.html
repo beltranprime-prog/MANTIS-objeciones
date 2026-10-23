@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manual de objeciones · Mantis</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#15171c; --surface:#1e2129; --surface2:#262a34; --text:#e8e6e1;
+  --muted:#a9aeb9; --accent:#d9b26f; --border:#2e333e; --warn:#e7a37a;
+  color-scheme:dark;
+}
+[data-theme="light"]{
+  --bg:#faf8f4; --surface:#ffffff; --surface2:#f3efe7; --text:#1f2328;
+  --muted:#5a616d; --accent:#8a6417; --border:#ddd6c8; --warn:#a4541c;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:18px;line-height:1.65}
+body{padding:env(safe-area-inset-top,0px) 16px env(safe-area-inset-bottom,0px)}
+.wrap{max-width:760px;margin:0 auto;padding:28px 0 72px}
+h1{font-size:2rem;line-height:1.2;margin:0 0 6px;color:var(--accent)}
+h2{font-size:1.3rem;margin:36px 0 12px;color:var(--accent)}
+p{margin:0 0 12px}
+.sub{color:var(--muted);margin-bottom:20px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+button,.chip{font:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);padding:10px 14px;min-height:44px}
+button:focus-visible,.chip:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.theme{white-space:nowrap}
+.box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:16px 0}
+.box p:last-child{margin-bottom:0}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;position:relative;padding:12px 0 12px 48px;border-bottom:1px solid var(--border)}
+.steps li:last-child{border-bottom:none}
+.steps li::before{content:counter(s);position:absolute;left:0;top:12px;width:32px;height:32px;border-radius:50%;
+  background:var(--accent);color:var(--bg);font-weight:700;display:flex;align-items:center;justify-content:center}
+.rules li{margin:8px 0}
+.warnbox{border-color:var(--warn)}
+.search{width:100%;font:inherit;padding:14px 16px;border-radius:12px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);margin:20px 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin:12px 0;overflow:hidden}
+.card summary{cursor:pointer;list-style:none;padding:16px 18px;display:block}
+.card summary::-webkit-details-marker{display:none}
+.card summary::after{content:"+";float:right;font-size:1.4rem;color:var(--accent);line-height:1}
+.card[open] summary::after{content:"−"}
+.tag{display:block;font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+.obj{font-weight:700;font-size:1.08rem}
+.body{padding:0 18px 18px;border-top:1px solid var(--border)}
+.body p{margin-top:14px}
+.body b{color:var(--accent)}
+.empty{color:var(--muted);padding:20px 0}
+footer{margin-top:40px;color:var(--muted);font-size:.95rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div>
+      <h1>Manual de objeciones</h1>
+      <div class="sub">Mantis · Para usar en la visita, no para leer en voz alta</div>
+    </div>
+    <button class="theme" id="theme" aria-label="Cambiar entre modo oscuro y claro">Modo claro</button>
+  </div>
+
+  <h2>La idea central</h2>
+  <div class="box">
+    <p>El sitio no es solo para que lo encuentren. Es para que confíen en el negocio antes de llamar. Quien ve horario, fotos reales, servicios claros y un teléfono, decide con más seguridad y se acerca con menos dudas.</p>
+    <p>Por eso cada respuesta de este manual cumple tres cosas: demuestra que el negocio existe y se ve serio, hace que el cliente ideal se reconozca en lo que ve, y deja un siguiente paso fácil: llamar, escribir o visitar.</p>
+  </div>
+
+  <h2>Cómo usar este manual</h2>
+  <div class="box">
+    <ol class="steps">
+      <li><b>Escucha la frase exacta.</b> Anótala con las palabras del cliente, no con las tuyas.</li>
+      <li><b>Descubre la objeción real.</b> Haz la pregunta sugerida. Muchas veces "está caro" significa "no sé si puedo confiar".</li>
+      <li><b>Responde corto.</b> Dilo con tus palabras; no lo leas como guion.</li>
+      <li><b>Confirma.</b> Pregunta: ¿eso le resuelve la duda?</li>
+      <li><b>Cierra con un siguiente paso.</b> Anticipo, simulador con su nombre o seguimiento en 24 a 48 horas.</li>
+    </ol>
+  </div>
+
+  <div class="box">
+    <b>Reglas que no se rompen</b>
+    <ul class="rules">
+      <li>Si el cliente no dijo la objeción, no la menciones.</li>
+      <li>No bajes el precio. Si pregunta por descuentos, explica el valor.</li>
+      <li>Si no sabes la respuesta, di: «lo confirmo y le escribo». No inventes.</li>
+      <li>Si el cliente dice que no, no lo dejes ir sin una última pregunta: ¿qué le haría falta para decidir? Recuerda que el cliente no deja de comprar: si no contrata con nosotros, contratará a otro. Antes de despedirte, agenda un seguimiento con fecha.</li>
+    </ul>
+  </div>
+
+  <div class="box warnbox">
+    <b>Datos por confirmar antes de usar este manual</b>
+    <p>Las respuestas asumen que el precio incluye IVA, que se entregan 4 publicaciones al mes y que los cambios de estructura se cobran aparte. Revisa estos puntos con tu contador y con tu equipo antes de la primera visita.</p>
+    <p>Despachos profesionales: este giro no se prospecta todavía. Primero hay que revisar las reglas de cada profesión.</p>
+  </div>
+
+  <h2>Objeciones</h2>
+  <input class="search" id="q" type="search" placeholder="Buscar por palabra, por ejemplo: caro, Facebook, recomendación" aria-label="Buscar objeción">
+  <div class="chips" id="chips" role="group" aria-label="Filtrar por giro"></div>
+  <div id="list"></div>
+
+  <footer>Mantis · Manual de objeciones · Versión 2</footer>
+</div>
+
+<script>
+const D = [
+  {g:"Universal", t:"Está caro o no tengo ese dinero ahorita", p:"¿Le preocupa el monto total o cuándo pagarlo?", r:"Son 6,790 pesos con todo incluido en el primer año. Se aparta con 3,395 pesos y el resto se paga al entregar. Además, el sitio le da una imagen seria que el cliente nuevo nota desde la primera búsqueda, y eso es lo que hace que confíe antes de llamar."},
+  {g:"Universal", t:"Déjeme pensarlo", p:"¿Qué le gustaría revisar para decidir?", r:"Claro. Le dejo el simulador con el nombre de su negocio para que lo vea con calma y le mando el resumen por WhatsApp. Así puede ver cómo se presentaría su negocio frente a un cliente nuevo. Trabajamos con 22 negocios al año, así que si quiere apartar su lugar, es con el anticipo."},
+  {g:"Universal", t:"Ya tengo Facebook o Instagram", p:"Cuando alguien busca su negocio en Google, ¿qué encuentra?", r:"Perfecto, eso suma. Pero quien busca en Google no llega a sus redes: llega al sitio y a la ficha de Maps, y ahí decide si confía. Además incluimos 4 publicaciones al mes para que sus redes también den confianza."},
+  {g:"Universal", t:"Mi sobrino o un conocido me lo hace", p:"¿Ya tiene su sitio funcionando o está pendiente?", r:"Qué bueno tener quien le ayude. Lo que le ofrecemos es respaldo por escrito: si no entregamos en 7 días desde que recibimos sus materiales, le devolvemos todo su dinero, y lo acompañamos 12 meses."},
+  {g:"Universal", t:"No tengo tiempo", r:"Por eso lo hacemos nosotros. Usted nos manda fotos, servicios y horario; el resto corre por nuestra cuenta. Usted solo revisa que su negocio se vea como quiere que lo vean."},
+  {g:"Universal", t:"Ya lo intenté y no funcionó", p:"¿Qué hizo antes y qué le faltó?", r:"Muchas veces se compra una página sin atención en línea, y el cliente se va porque no le da confianza. Nosotros entregamos un sitio con mantenimiento, cambios y contenido, para que siempre se vea actual y serio. No prometemos ventas: prometemos que el sitio esté listo y que lo acompañemos."},
+  {g:"Universal", t:"¿Y si no sale bien?", r:"Si no entregamos en 7 días desde que recibimos sus materiales, le devolvemos todo su dinero. Las ventas dependen del servicio que da usted; lo que sí garantizamos es la entrega."},
+  {g:"Universal", t:"¿Y Google Maps?", r:"Optimizamos su ficha con fotos, horario, categoría correcta y el enlace a su sitio. Así quien la ve tiene una primera impresión clara y confiable. Empezamos cuando nos da acceso a su perfil. Cómo se posiciona no lo podemos garantizar."},
+
+  {g:"Restaurantes y taquerías", t:"Mis clientes me conocen, no necesito internet", p:"¿Cuántos clientes nuevos le llegan de alguien que no lo conocía?", r:"Sus clientes de siempre seguirán llegando. El sitio es para quien busca tacos cerca y nunca ha pasado por aquí: al ver menú, fotos y horario, decide si confía en usted antes de venir."},
+  {g:"Restaurantes y taquerías", t:"No quiero que vean mis precios", r:"No hace falta publicarlos. Puede mostrar el menú sin precios y poner consulte por WhatsApp. Lo que sí da confianza es que se vean el platillo, el lugar y el horario."},
+  {g:"Restaurantes y taquerías", t:"Ya tengo WhatsApp y Facebook para pedidos", p:"¿Cuántos pedidos le llegan de gente que nunca lo ha visto?", r:"Qué bien. El sitio permite que lo encuentren quienes no lo conocen y vean su negocio antes de escribirle. El pedido llega al mismo WhatsApp que ya usa."},
+  {g:"Restaurantes y taquerías", t:"Ya salgo en Google con el mapa, basta", p:"¿Tiene fotos del menú y del local en su ficha?", r:"El mapa lo encuentra. El sitio le da menú, fotos y horario completos, y eso es lo que hace que alguien que no lo conoce se sienta seguro de ir."},
+  {g:"Restaurantes y taquerías", t:"Las apps de delivery me quitan mucha comisión", r:"Las apps cobran comisión por cada pedido. El sitio le da un canal propio donde el cliente lo conoce y le escribe directo a WhatsApp."},
+  {g:"Restaurantes y taquerías", t:"No tengo capacidad para más clientes", r:"No hace falta crecer de golpe. El sitio sirve para que lleguen a su mesa con confianza, y crecemos cuando usted lo decida."},
+  {g:"Restaurantes y taquerías", t:"Mi clientela es de tradición, no de internet", p:"¿Qué clientes nuevos le gustaría tener el próximo año?", r:"Sus clientes de siempre se quedan. El sitio es para quien llega de fuera de la colonia, de paso o por primera vez, y encuentra un negocio serio y bien presentado."},
+
+  {g:"Talleres mecánicos", t:"Mi trabajo viene por recomendación", p:"Cuando le recomiendan, ¿la persona lo busca en Google antes de llamar?", r:"Sí. Si lo busca y no encuentra nada, la recomendación pierde fuerza. El sitio confirma lo que le dijeron: servicios, horario y teléfono. Eso le da credibilidad antes de la primera llamada."},
+  {g:"Talleres mecánicos", t:"Los precios cambian todo el tiempo", r:"No tiene que publicar precios exactos. Puede poner servicios y cotice por WhatsApp. Los cambios de precio se actualizan sin costo, y lo que se ve es un taller activo y cuidado."},
+  {g:"Talleres mecánicos", t:"Ya tengo clientes fijos, no necesito más", p:"¿Cuántos trabajos tiene que rechazar al mes por falta de espacio o tiempo?", r:"Entonces el sitio le sirve para elegir mejores trabajos, no solo más. Además da credibilidad a quien no lo conoce."},
+  {g:"Talleres mecánicos", t:"Mis clientes no usan internet", r:"Quien busca un taller usa el celular, aunque no sea su cliente. Quien recomienda a un hijo o a un vecino sí busca en Google antes de mandarlo, y ahí el sitio genera confianza."},
+  {g:"Talleres mecánicos", t:"Ya me conocen en la colonia, no hace falta", r:"Sí, y quien llega desde otra colonia o de paso necesita encontrarlo. El sitio confirma que existe, qué hace y que es un negocio serio."},
+  {g:"Talleres mecánicos", t:"Mis precios dependen de cada carro", r:"Puede publicar servicios con su rango de precio o pedir que cotice por WhatsApp. Los cambios se actualizan sin costo."},
+
+  {g:"Salud (dentistas y consultorios)", t:"Mis pacientes no buscan en internet, vienen por el doctor", r:"Quien le recomienda busca el nombre del consultorio antes de llamar. El sitio muestra su horario, cómo agendar y sus servicios, y eso da la confianza que necesita para pedir cita."},
+  {g:"Salud (dentistas y consultorios)", t:"No quiero que me critiquen en Google", p:"¿Hoy tiene reseñas en su ficha de Google?", r:"Las reseñas existen aunque no tenga sitio. El sitio y la ficha le dan la forma de responder y de pedir reseñas a sus pacientes, y de mostrar que atiende con seriedad."},
+  {g:"Salud (dentistas y consultorios)", t:"Mis tratamientos son caros y no quiero publicar precios", r:"El sitio no tiene que anunciar precios. Puede explicar los tratamientos y cómo agendar una valoración, que es lo que genera confianza."},
+  {g:"Salud (dentistas y consultorios)", t:"Ya tengo un directorio médico que me manda pacientes", p:"¿Esos pacientes le buscan después en Google?", r:"Muchos sí. El sitio confirma servicios y ubicación a quien ya escuchó su nombre en el directorio, y eso se convierte en una cita."},
+
+  {g:"Salones y estéticas", t:"Mi clientela es muy fija, no necesito más", r:"Entonces el sitio ayuda a mantenerlas y a que recomienden. Quien recomienda también busca el salón antes de llamar, y ahí el sitio da confianza."},
+  {g:"Salones y estéticas", t:"No sé usar redes ni internet", r:"No hace falta que usted lo maneje. Nosotros lo armamos; usted solo confirma sus servicios y precios. Lo que ve la clienta nueva es un salón serio y bien presentado."},
+  {g:"Salones y estéticas", t:"Mis precios cambian según el servicio", r:"Puede publicar servicios con rango de precio o pedir cotizar por WhatsApp. Los cambios se actualizan sin costo."},
+  {g:"Salones y estéticas", t:"Ya tengo Instagram que se ve bien", p:"¿Quien llega a su perfil termina agendando?", r:"Si ya agenda ahí, el sitio complementa. Lleva a su perfil y a WhatsApp para citas, y suma credibilidad porque la clienta ve un negocio completo."},
+
+  {g:"Gimnasios", t:"Mi gimnasio ya tiene mucha gente", r:"Entonces el sitio ayuda a mantener clases y horarios claros para quien llega de nuevo, y a que sienta que el gimnasio está bien organizado."},
+  {g:"Gimnasios", t:"La gente ya me conoce por recomendación", r:"Quien recomienda busca horario y precios antes de ir. El sitio le confirma eso y da seguridad a quien llega por primera vez."},
+  {g:"Gimnasios", t:"Mis promociones cambian cada mes", r:"Puede tener una sección de promociones vigentes que actualizamos sin costo. Los cambios de precios y horarios están incluidos, y eso mantiene la confianza al día."},
+  {g:"Gimnasios", t:"Ya me cobra otra agencia", p:"¿Qué incluye lo que le cobran?", r:"Comparemos lo que entrega cada uno: sitio, ficha de Maps, 4 publicaciones al mes y 12 meses de mantenimiento. Lo que importa es que el cliente nuevo vea un gimnasio serio."},
+  {g:"Gimnasios", t:"La gente se inscribe en persona", r:"Sí, pero antes de ir miran horarios, precios de inscripción y ubicación. El sitio hace que lleguen con confianza y decididos."},
+
+  {g:"Tiendas de ropa", t:"Vendo sobre todo por redes", r:"Las redes llegan a quien ya lo sigue. El sitio es para quien busca tienda de ropa en Morelia y necesita ver catálogo y horario antes de visitar."},
+  {g:"Tiendas de ropa", t:"Mis clientes compran en tienda, no en línea", r:"No hace falta vender en línea. El sitio muestra catálogo, horario y ubicación para quien busca en Google antes de visitar, y eso le da confianza de que la tienda está activa."},
+  {g:"Tiendas de ropa", t:"No quiero que copien mis fotos", r:"El sitio puede usar sus propias fotos con marca de agua. Así se identifica su tienda en cada imagen y se ve profesional."},
+  {g:"Tiendas de ropa", t:"Las marcas que vendo no dejan publicar sus logos", r:"El sitio puede mostrar las marcas que maneja sin usar material de la marca sin permiso."},
+
+  {g:"Ferreterías y tlapalerías", t:"Mis clientes son de la colonia, me conocen", r:"Sí, pero el contratista o el vecino de otra colonia busca ferretería abierta cerca. Horario y ubicación son lo que necesita para confiar y ir."},
+  {g:"Ferreterías y tlapalerías", t:"No vendo en línea", r:"No hace falta vender en línea. El sitio informa y da confianza, y la ficha de Maps lleva al cliente hasta la puerta."},
+  {g:"Ferreterías y tlapalerías", t:"Mis precios cambian cada día", r:"Puede poner categorías y cotizar por WhatsApp o en mostrador. Los precios exactos no hace falta publicarlos."},
+  {g:"Ferreterías y tlapalerías", t:"Mis clientes son contratistas que ya me llaman", p:"¿Cuántos contratistas nuevos le llegaron el último año?", r:"Los que ya lo llaman seguirán. El sitio es para el contratista que apenas llega a la zona y necesita un lugar en el que confiar."},
+  {g:"Ferreterías y tlapalerías", t:"No tengo espacio para mostrar productos", r:"El sitio no necesita mostrar todo. Puede mostrar las categorías principales y el horario."},
+
+  {g:"Veterinarias", t:"Mis clientes llegan en emergencias", p:"¿Cuántos casos nuevos llegan buscando de noche o en fin de semana?", r:"El sitio muestra horario de urgencias y ubicación, justo lo que busca esa persona a esa hora. En una urgencia, la confianza se gana con información clara."},
+  {g:"Veterinarias", t:"Ya tengo mis clientes en Facebook", r:"Facebook es para quien ya lo conoce. Google es para quien acaba de mudarse o busca una urgencia, y ahí el sitio da confianza antes de la llamada."},
+  {g:"Veterinarias", t:"Me recomiendan entre dueños de mascotas", r:"Quien recomienda busca el horario y la ubicación antes de ir. El sitio confirma eso y da seguridad."},
+  {g:"Veterinarias", t:"Las urgencias no se pueden programar", r:"Por eso el sitio muestra horario de urgencias y teléfono de contacto, para que sepan a qué hora llamar."},
+  {g:"Veterinarias", t:"Vendo medicamentos y eso no se publicita", r:"No promocionamos medicamentos. El sitio informa servicios, horario y ubicación."},
+
+  {g:"Escuelas de idiomas", t:"Mis alumnos llegan por recomendación", r:"Quien recomienda también busca. El sitio confirma horarios, niveles y cómo inscribirse, y así el alumno nuevo llega con confianza."},
+  {g:"Escuelas de idiomas", t:"Ya tengo un formulario de Google", r:"Perfecto. El sitio puede llevar ese formulario y mostrar sus grupos y horarios."},
+  {g:"Escuelas de idiomas", t:"Mis grupos se llenan solos", r:"Entonces el sitio ayuda a llenar los próximos grupos sin depender de un solo canal."},
+  {g:"Escuelas de idiomas", t:"Mi escuela es pequeña, no hace falta internet", r:"Quien busca clases de inglés cerca y no lo encuentra se va con otra escuela. El sitio es para quien aún no lo conoce y necesita confiar."},
+  {g:"Escuelas de idiomas", t:"Mis clases son en línea y no tengo sede", r:"El sitio puede mostrar cómo tomar las clases en línea, horarios y cómo inscribirse."},
+
+  {g:"Salones de eventos", t:"Mis eventos se cierran en persona y por referencias", r:"Quien cotiza busca fotos de eventos antes de llamar. Una galería con sus salones confirma lo que le dijeron y genera confianza."},
+  {g:"Salones de eventos", t:"No tengo eventos para mostrar", r:"Empezamos con fotos de sus espacios y se agregan eventos cuando se realicen."},
+  {g:"Salones de eventos", t:"Trabajo con wedding planners y ellos me llevan los eventos", r:"Los planners también buscan el salón en Google y revisan fotos. El sitio confirma lo que le recomendaron y da confianza a la pareja."},
+  {g:"Salones de eventos", t:"No quiero publicar mis precios de temporada", r:"Puede publicar rangos o pedir cotización por WhatsApp. Los cambios de temporada se actualizan."},
+  {g:"Salones de eventos", t:"Mis fotos son de hace años", r:"Actualizamos el sitio con fotos recientes de sus espacios. Eso se hace en la entrega."},
+
+  {g:"Hospedaje", t:"Reservo por Booking o Airbnb", r:"Esas plataformas cobran comisión. El sitio le da un canal propio con su información y contacto directo, y el huésped llega con confianza."},
+  {g:"Hospedaje", t:"No necesito más huéspedes", r:"El sitio le sirve para sostener su ocupación sin depender de una sola plataforma."},
+  {g:"Hospedaje", t:"Ya tengo huéspedes frecuentes", r:"El sitio le sirve para que los frecuentes recomienden y para quien busca hospedaje en su zona por primera vez."},
+  {g:"Hospedaje", t:"Booking me da visibilidad suficiente", r:"Booking muestra su hotel junto a muchos otros. El sitio le da un canal donde usted decide cómo se presenta."},
+  {g:"Hospedaje", t:"No tengo fotos de las habitaciones", r:"Empezamos con fotos de celular y las mejoramos después."},
+
+  {g:"Farmacias", t:"Mi giro es de mostrador, no de internet", r:"La gente busca farmacia abierta cerca a cualquier hora. El sitio y la ficha de Maps dan horario y ubicación, y eso genera confianza."},
+  {g:"Farmacias", t:"Quiero publicar mis promociones", r:"Hay reglas de publicidad para medicamentos. Podemos informar servicios y horario, y revisamos cualquier promoción antes de publicarla."},
+  {g:"Farmacias", t:"Mis clientes me conocen por nombre", r:"Quien llega de paso o se muda busca farmacia cerca. El sitio confirma horario y ubicación y da confianza a quien no conoce el lugar."},
+  {g:"Farmacias", t:"Ya tengo entregas a domicilio por WhatsApp", r:"Perfecto. El sitio puede mostrar la zona de entrega y el número de WhatsApp para pedidos."},
+  {g:"Farmacias", t:"No quiero que me confundan con una tienda", r:"El sitio informa servicios y horario de la farmacia. No vende medicamentos en línea."},
+
+  {g:"Constructoras", t:"Mis clientes llegan por recomendación", r:"Quien lo recomienda busca su nombre antes de llamar. El sitio con galería confirma lo que le dijeron y genera confianza antes del presupuesto."},
+  {g:"Constructoras", t:"No tengo fotos de obras", r:"Empezamos con las que tenga, aunque sean de celular. El portafolio crece después."},
+  {g:"Constructoras", t:"Trabajo con inmobiliarias que me dan los proyectos", r:"Las inmobiliarias también buscan a la constructora antes de contratar. El sitio con portafolio confirma lo que le dijeron."},
+  {g:"Constructoras", t:"Mis obras son privadas y no puedo mostrarlas", r:"Puede mostrar obras con autorización del cliente o fotos de procesos sin datos privados. Revisamos juntos qué sí se puede publicar."},
+  {g:"Constructoras", t:"Ya pagué una página y no aparece", p:"¿Dónde la buscó y qué salió?", r:"Lo revisamos juntos: si aparece en Google y se ve bien en celular, se lo decimos. Si no, lo corregimos."},
+
+  {g:"Florerías", t:"Vendo mucho en fechas especiales", r:"Eso es justo lo que el sitio aprovecha. Se actualiza para San Valentín, 10 de mayo, Día de Muertos y otras fechas, y el cliente ve un negocio activo y confiable. Los cambios estacionales están incluidos."},
+  {g:"Florerías", t:"Entrego a domicilio, no necesito que me encuentren", p:"¿Cuántos pedidos llegan de alguien que no es cliente suyo?", r:"El sitio y la ficha de Maps muestran su zona de entrega y horarios a quien busca florería cerca o regalos a domicilio, y ahí decide si confía."},
+  {g:"Florerías", t:"Mis pedidos son por WhatsApp y redes", r:"El sitio puede tener el botón de WhatsApp y las fechas especiales. Quien busca en Google llega por el sitio y confía antes de escribir."},
+  {g:"Florerías", t:"No puedo tener catálogo, las flores cambian", r:"No hace falta un catálogo completo. Puede mostrar arreglos tipo, precios de referencia y pedir por WhatsApp."},
+
+  {g:"Lavanderías", t:"Todo el mundo pasa por aquí", r:"Quien pasa ya lo conoce. Quien se muda o busca lavandería cerca necesita ver horario y servicios antes de llegar, y eso le da confianza."},
+  {g:"Lavanderías", t:"Cobro por kilo, no sé cómo publicarlo", r:"Puede publicar la tarifa por kilo o poner consulte por WhatsApp. Las dos opciones funcionan."},
+  {g:"Lavanderías", t:"Mis clientes son de paso, no necesito que me busquen", r:"Quien busca lavandería cerca mientras viaja es justo quien llega. Ver horario y servicios le da confianza antes de ir."},
+  {g:"Lavanderías", t:"No tengo recogida y entrega", r:"El sitio muestra lo que sí ofrece. Si después agrega recogida, se actualiza sin costo."},
+
+  {g:"Despachos profesionales", t:"En mi profesión no se puede publicitar", r:"Hay reglas para servicios profesionales. El sitio informa servicios y contacto sin prometer resultados, y lo revisamos antes de publicar. Lo que sí genera confianza es que su nombre y sus servicios se vean claros."},
+  {g:"Despachos profesionales", t:"Mis clientes llegan solo por referencia y no quiero exposición", r:"El sitio puede ser solo informativo: servicios y contacto, sin promesas. Lo revisamos antes de publicar."},
+  {g:"Despachos profesionales", t:"Ya tengo un sitio de mi firma", p:"¿Aparece en Google con su nombre y servicios?", r:"Si ya aparece y se ve bien en celular, se lo decimos. Si no, lo revisamos juntos antes de hacer cambios."}
+];
+
+const GIROS = [...new Set(D.map(o => o.g))].filter(g => g !== "Universal");
+const state = { g: "Todas", q: "" };
+const $ = id => document.getElementById(id);
+
+function esc(s){
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function chipsHTML(){
+  const opts = ["Todas", "Universal", ...GIROS];
+  const labels = {"Universal":"Objeciones universales"};
+  $("chips").innerHTML = opts.map(o =>
+    `<button class="chip" aria-pressed="${state.g === o}" data-g="${esc(o)}">${esc(labels[o] || o)}</button>`
+  ).join("");
+}
+
+function card(o){
+  return `<details class="card">
+    <summary><span class="tag">${esc(o.g)}</span><span class="obj">${esc(o.t)}</span></summary>
+    <div class="body">
+      <p><b>Pregunta para descubrirla</b><br>${o.p ? esc(o.p) : "No hace falta. Responda directo."}</p>
+      <p><b>Respuesta</b><br>${esc(o.r)}</p>
+      <p><button data-copy="${esc(o.r)}">Copiar respuesta</button></p>
+    </div>
+  </details>`;
+}
+
+function render(){
+  const q = state.q.trim().toLowerCase();
+  const list = D.filter(o => {
+    const grupo = state.g === "Todas" || o.g === state.g || (state.g === "Universal" && o.g === "Universal");
+    const texto = (o.t + " " + (o.p||"") + " " + o.r + " " + o.g).toLowerCase();
+    return grupo && (!q || texto.includes(q));
+  });
+  $("list").innerHTML = list.length ? list.map(card).join("") : `<p class="empty">No encontré objeciones con esa búsqueda. Prueba con otra palabra.</p>`;
+}
+
+$("chips").addEventListener("click", e => {
+  const b = e.target.closest("button[data-g]");
+  if (!b) return;
+  state.g = b.dataset.g;
+  chipsHTML();
+  render();
+});
+
+$("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+
+$("list").addEventListener("click", e => {
+  const b = e.target.closest("button[data-copy]");
+  if (!b) return;
+  const txt = b.dataset.copy;
+  const done = () => { b.textContent = "Copiado ✓"; setTimeout(() => b.textContent = "Copiar respuesta", 1800); };
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(done, () => b.textContent = "No se pudo copiar");
+  } else {
+    b.textContent = "No se pudo copiar";
+  }
+});
+
+$("theme").addEventListener("click", () => {
+  const root = document.documentElement;
+  const light = root.getAttribute("data-theme") === "light";
+  root.setAttribute("data-theme", light ? "dark" : "light");
+  $("theme").textContent = light ? "Modo claro" : "Modo oscuro";
+});
+
+chipsHTML();
+render();
+</script>
+</body>
+</html>
